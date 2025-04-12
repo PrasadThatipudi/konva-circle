@@ -1,29 +1,29 @@
 // first we need to create a stage
 // import { Konva } from "konva";
-const main = () => {
-  var stage = new Konva.Stage({
-    container: "container", // id of container <div>
+const createStage = (stageId) =>
+  new Konva.Stage({
+    container: stageId, // id of container <div>
     width: 500,
     height: 500,
   });
 
-  // then create layer
-  var layer = new Konva.Layer();
-
-  // create our shape
-  var circle = new Konva.Circle({
+const createCircle = (stage) =>
+  new Konva.Circle({
     x: stage.width() / 2,
     y: stage.height() / 2,
     radius: 70,
-    fill: "red",
-    stroke: "black",
+    fill: "white",
+    stroke: "whitesmoke",
     strokeWidth: 4,
   });
 
-  // add the shape to the layer
-  layer.add(circle);
+const main = () => {
+  const stage = createStage("container");
+  const layer = new Konva.Layer();
 
-  // add the layer to the stage
+  const circle = createCircle(stage);
+
+  layer.add(circle);
   stage.add(layer);
 };
 
